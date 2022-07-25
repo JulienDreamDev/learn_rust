@@ -2,10 +2,6 @@ use std::io::{self, Write};
 use std::cmp::Ordering;
 use rand::Rng;
 
-fn hello_world() {
-    println!("Hello, world!"); // "!" denote a macro
-}
-
 fn guessing_game() {
     println!("Guess the number!");
 
@@ -46,6 +42,5 @@ fn guessing_game() {
 }
 
 fn main() {
-    // hello_world();
     guessing_game();
 }

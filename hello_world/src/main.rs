@@ -1,3 +1,7 @@
+fn hello_world() {
+    println!("Hello, world!"); // "!" denote a macro
+}
+
 fn main() {
-    println!("Hello, world!");
+    hello_world();
 }
