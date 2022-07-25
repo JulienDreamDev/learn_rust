@@ -5,5 +5,5 @@ fn main() {
 
     let tup: (i32, char, f64) = (54, 'o', 489.36); // Tupple of int, char and double
     let (x, y, z) = tup;
-    println!("destrucuting the tupple {x} {y} {z}");
+    println!("destructuring the tupple {x} {y} {z}");
 }
