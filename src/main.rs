@@ -22,9 +22,14 @@ fn guessing_game() {
             .read_line(&mut guess)
             .expect("Failed to read line");
             
-        let guess: u32 = guess.trim() // Shadowing the previous devlaration to change the type
-            .parse()
-            .expect("Please type a number !");
+        let guess: u32 = match guess.trim() // Shadowing the previous devlaration to change the type
+            .parse() {
+                Ok(num) => num,
+                Err(_) => {
+                    println!("Please input a number!");
+                    continue; // Next loop
+                },
+            };
 
         match guess.cmp(&secret_number) {
             Ordering::Less => println!("Too small!"),
