@@ -1,4 +1,6 @@
 use std::io::{self, Write};
+use std::cmp::Ordering;
+use rand::Rng;
 
 fn hello_world() {
     println!("Hello, world!"); // "!" denote a macro
@@ -6,6 +8,8 @@ fn hello_world() {
 
 fn guessing_game() {
     println!("Guess the number!");
+
+    let secret_number = rand::thread_rng().gen_range(1..=100);
 
     print!("Input your guess: ");
     io::stdout() // Flushing to ensure the output is showed before stdin
@@ -16,8 +20,16 @@ fn guessing_game() {
     io::stdin()
         .read_line(&mut guess)
         .expect("Failed to read line");
+        
+    let guess: u32 = guess.trim() // Shadowing the previous devlaration to change the type
+        .parse()
+        .expect("Please type a number !");
 
-    println!("Your guess is {guess}");
+    match guess.cmp(&secret_number) {
+        Ordering::Less => println!("Too small!"),
+        Ordering::Greater => println!("Too big!"),
+        Ordering::Equal => println!("You guessed right!"),
+    }
 }
 
 fn main() {
